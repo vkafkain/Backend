@@ -6,6 +6,6 @@ const { noMethod } = require('../controllers/errorHandler');
 
 router.post('/', login);
 
-//router.use(noMethod);
+router.use(noMethod);
 
 module.exports = router;

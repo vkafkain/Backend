@@ -14,8 +14,8 @@ const noMethod = (req, res) => {
     res.status(405).json(new Response(405, { message: "Method not allowed" }, "There was an error", null))
 }
 
-const serverError = (req, res) => {
-    res.status(500).json(new Response(500, {message: "Server error"}, "An error occurred", null));
+const serverError = (req, res, error) => {
+    res.status(500).json(new Response(500, {message: error.message}, "An error occurred", null));
 }
 
 
