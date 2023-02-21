@@ -75,3 +75,42 @@ _For the application to function properly, it is recommended to have this progra
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Node.js y npm](https://nodejs.org/es/)
 - [MySQL](https://www.mysql.com/downloads/)
+
+## Install
+
+_Clone this repository to your local repository, run the following command in terminal to install the dependencies and for the project to work correctly:_
+
+```
+npm install
+```
+
+## Enviroment variables
+
+_In order for everything to work, we have to enable the environment variables. To do this, you have to create a file with the name `.env` and enter the data you have in the `.env-templates` file._
+
+## Run the application
+
+_Once we have the programs and dependencies installed, run the following command in terminal:_ 
+
+```
+npm start
+```
+
+## Database
+
+### Entity-Relationship database model
+
+_We have created the database in MySQL with the entity-relationship model, in large volumes of data having a structured database gives us stability.
+
+
+## Technologies
+
+
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Programming language used.
+* [Node.js](https://nodejs.org/en/docs/) - Server-side JavaScript runtime environment.
+* [MySQL](https://dev.mysql.com/doc/) - MySQL is a relational database management system based on SQL – Structured Query Language.
+* [NPM](https://www.npmjs.com/) - Dependency manager.
+* [dotenv](https://www.npmjs.com/package/dotenv) - Dotenv is a zero-dependency module that loads environment variables.
+* [mysql2](https://www.npmjs.com/package/mysql2) - MySQL client for Node.js with focus on performance. Supports prepared statements, non-utf8 encodings, binary log protocol, compression, ssl much more.
+* [sequelize](https://www.npmjs.com/package/sequelize) - Sequelize is an easy-to-use and promise-based Node.js ORM tool for Postgres, MySQL, MariaDB, SQLite, DB2, Microsoft SQL Server, and Snowflake. It features solid transaction support, relations, eager and lazy loading, read replication and more.
+* [cors](https://www.npmjs.com/package/cors) - CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
