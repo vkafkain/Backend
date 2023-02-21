@@ -7,8 +7,9 @@ const { designDB } = require("./database/db.design");
 const app = express();
 
 const PORT = process.env.SERVER_PORT || 3000;
-
+// Initialize db
 designDB()
+
 // Global middlewares
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
