@@ -17,7 +17,9 @@ const designDB = async function() {
 
     await sequelize.sync({force: false})
     //bsucar que existeixi
-    User.create({name: "Admin", rol:0, password:"Prova", email: "admin@example.com"})
+
+    //User.create({name: "Admin", rol:0, password:"Prova", email: "admin@example.com"})
+    
 }
 
 module.exports = { designDB }
