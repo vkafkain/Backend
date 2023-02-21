@@ -8,10 +8,10 @@ const sequelize = new Sequelize(
   config.password,
   {
     host: config.host,
-    dialect: config.dialect,
+    dialect: "mysql",
   }
 );
-async function connecSQLDB() {
+async function connectDB() {
   const connection = mysql.createConnection({
     host: config.host,
     user: config.username,
@@ -31,4 +31,4 @@ async function connecSQLDB() {
   connection.end();
 }
 
-module.exports = { sequelize, connecSQLDB };
+module.exports = { sequelize, connectDB };
