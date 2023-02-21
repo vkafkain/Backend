@@ -38,7 +38,22 @@ const putGOInput = async (req, res) => {
     } catch (error) { return res.status(500).json(new Response(500, { message: error.message }, "There was an error", null)) }
 }
 
+const getDay = async (req, res) => {
+
+    let myDay = req.params.day;
+
+    if(!myDay) {
+        myDay = new Date().toLocaleString('sv-SE', { timeZone: 'UTC'}).split(' ')[0];
+    } 
+
+    try {
+        console.log(myDay)
+
+    } catch(err){
+        console.log(err.message);
+
+    }
+}
 
 
-
-module.exports = { postGO, putGOInput }
+module.exports = { postGO, putGOInput, getDay }
