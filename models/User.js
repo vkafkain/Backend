@@ -13,7 +13,7 @@ const User = sequelize.define("User", {
         unique: true,
         allowNull: false
     },
-    level: {
+    role: {
         type: Sequelize.TINYINT,
         allowNull: false,
         defaultValue: 1,
@@ -22,6 +22,11 @@ const User = sequelize.define("User", {
     password: {
         type: Sequelize.STRING(65),
         allowNull: false
+    },
+    email: {
+        type: Sequelize.STRING(100),
+        allowNull: false,
+        unique: true
     }
 });
 

@@ -2,10 +2,13 @@ const express = require("express");
 const cors = require("cors")
 const { pageNotFound } = require("./controllers/errorHandler");
 const app = express();
-const {connectDB} = require("./database/db.connection")
+const {connectDB} = require("./database/db.connection");
+const User = require("./models/User");
+const { designDB } = require("./database/db.design");
 const PORT = process.env.SERVER_PORT || 3000;
 
 connectDB();
+designDB()
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
