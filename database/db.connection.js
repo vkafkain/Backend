@@ -12,12 +12,5 @@ const sequelize = new Sequelize(
     dialect: "mysql",
   }
 );
-const connectDB = async () => {
-  try{
-      console.log('Connection to mySQL-DB has been established successfully')
-  }catch(error) {
-      console.error('Unable to connect to the database:', error);
-  }
-};
 
-module.exports = { sequelize, connectDB };
+module.exports = { sequelize };

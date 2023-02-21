@@ -7,7 +7,6 @@ const User = require("./models/User");
 const { designDB } = require("./database/db.design");
 const PORT = process.env.SERVER_PORT || 3000;
 
-connectDB();
 designDB()
 
 app.use(express.urlencoded({extended:false}));
