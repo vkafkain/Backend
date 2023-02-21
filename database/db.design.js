@@ -16,12 +16,13 @@ const designDB = async function () {
     await mysqlConnection.query(`CREATE DATABASE IF NOT EXISTS \`${config.database}\``);
     await mysqlConnection.end();
     await sequelize.sync({ force: false });
-    
+
     try {
         const password = await bcrypt.hash(`${config.admin_password}`, 2)
         await User.create({ name: "Admin", role: 0, password, email: "admin@example.com" })
-    } catch (error) { 
-        console.log("User Admin already registered"); 
+        await User.create({ name: "guest", role: 1, password, email: "guest@example.com" })
+    } catch (error) {
+        console.log("User Admin already registered");
     }
 }
 
