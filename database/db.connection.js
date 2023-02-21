@@ -11,24 +11,20 @@ const sequelize = new Sequelize(
     dialect: "mysql",
   }
 );
-async function connectDB() {
-  const connection = mysql.createConnection({
-    host: config.host,
-    user: config.username,
-    password: config.password,
-  });
-  connection.query(
-    `CREATE DATABASE IF NOT EXISTS ${config.database};`,
-    (err, result) => {
-      console.log("Database created");
-      if (err) throw err;
-      sequelize
-        .sync({ force: false })
-        .then(() => console.log("Database connected"))
-        .catch((err) => console.log(err));
-    }
-  );
-  connection.end();
-}
+const connectDB = async () => {
+  try{
+      const connection = await mysql.createConnection({
+      host: config.host,
+      port: config.port,
+      user: config.username,
+          password: config.password
+      });
+      await connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`),
+      await sequelize.sync({ force: false });
+      console.log('Connection to mySQL-DB has been established successfully')
+  }catch(error) {
+      console.error('Unable to connect to the database:', error);
+  }
+};
 
 module.exports = { sequelize, connectDB };
