@@ -1,5 +1,6 @@
+const sequelize = require('../database/db.connection');
 const router = require('express').Router();
-const fs = require('fs')
+const fs = require('fs');
 
 //const { authJWTMW } = require('../middlewares/authJWT')
 const PATH_ROUTES = __dirname;
