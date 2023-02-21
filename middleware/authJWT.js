@@ -1,7 +1,7 @@
 const Response = require('../models/Response')
 const jwt = require('jsonwebtoken');
 
-
+//verifies basic user
 const authJWTMW = (req, res, next) => {
     try {
         if (!req.headers.authorization) { return res.status(401).json(new Response(401, { message: "You are not logged in" }, "There was an error", null)) }
@@ -13,7 +13,7 @@ const authJWTMW = (req, res, next) => {
         return next();
     } catch (error) { return res.status(500).json(new Response(500, { message: error.message }, "There was an error", null)) }
 }
-
+//verifies admin 
 const authJWTMWAdmin = (req, res, next) => {
     try {
         if (!req.headers.authorization) { return res.status(401).json(new Response(401, { message: "You are not logged in" }, "There was an error", null)) }

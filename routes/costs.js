@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { orderAsc, orderDesc } = require("../controllers/rankCosts")
+const { orderAsc, orderDesc } = require("../controllers/rankCosts");
+const { authJWTMW } = require('../middleware/authJWT');
 
-router.post('/asc', orderAsc);
-router.post('/desc', orderDesc);
+router.get('/asc', authJWTMW, orderAsc);
+router.get('/desc', orderDesc);
 
 module.exports = router;
