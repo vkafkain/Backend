@@ -17,7 +17,7 @@ const designDB = async function () {
     await sequelize.sync({ force: false })
     try {
         const password = await bcrypt.hash(`${config.admin_password}`, 2)
-        await User.create({ name: "Admin", rol: 0, password, email: "admin@example.com" })
+        await User.create({ name: "Admin", role: 0, password, email: "admin@example.com" })
     } catch (error) { console.log("Usuari Admin ja hi és"); }
 }
 
