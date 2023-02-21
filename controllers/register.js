@@ -40,7 +40,6 @@ const registerUser = async (req, res) => {
         console.log(newUser);
 
         const payload = {
-            userId: newUser._id,
             userName: newUser.userName
         }
         // creates JWT
@@ -50,7 +49,7 @@ const registerUser = async (req, res) => {
 
         return res.status(201).json({
             status: "ok", 
-            payload: payload,
+            //payload: payload,
             accessToken: accessToken
             //message: `user ${userName} registered`
         });
