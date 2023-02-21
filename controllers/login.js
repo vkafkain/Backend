@@ -8,15 +8,13 @@ const login = async (req, res) => {
     const userName = req.body.userName;
     const password = req.body.password;
     
-    //console.log('user input is :' + userName, password);
-
     if(!userName || !password) {
         return invalidInput(req, res);
     }
 
     try{
    
-    const userFound = await User.findOne({ userName });
+    const userFound = await User.findOne({ name: userName });
 
     if(!userFound) {
         return res.status(401).json({

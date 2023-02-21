@@ -4,7 +4,7 @@ const router = require('express').Router();
 const {login} = require('../controllers/login');
 const { noMethod } = require('../controllers/errorHandler');
 
-router.post('/login', login);
+router.post('/', login);
 
 //router.use(noMethod);
 
