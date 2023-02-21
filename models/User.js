@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-//const { sequelize } = require('../utils/dbMySQL');
+const { sequelize } = require('../database/db.connection');
 
 const User = sequelize.define("User", {
     id: {
