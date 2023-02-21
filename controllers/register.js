@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const  User  = require('../models/User');
 const { invalidInput } = require('./errorHandler');
-//const Response = require('../models/Response');
+const Response = require('../models/Response');
 
 
 const registerUser = async (req, res) => {
@@ -40,26 +40,19 @@ const registerUser = async (req, res) => {
         console.log(newUser);
 
         const payload = {
-            userName: newUser.userName
+            userName: newUser.userName,
+            role: newUser.role
         }
         // creates JWT
         const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_KEY);
         
         //console.log('JWT created ' + accessToken);
 
-        return res.status(201).json({
-            status: "ok", 
-            //payload: payload,
-            accessToken: accessToken
-            //message: `user ${userName} registered`
-        });
+        return res.status(201).json(new Response(201, null, "ok", {token: accessToken}));
 
      } catch (err) {
         console.log(err);
-        res.status(500).json({
-            status: 'error',
-            message: err.message
-        })
+        res.status(500).json(new Response(500, {message: err.message}, "There was an error", null))
     }
 }
 
