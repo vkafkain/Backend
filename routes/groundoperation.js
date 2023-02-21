@@ -1,11 +1,12 @@
 const router = require('express').Router();
 
-//Controller
+//Imports
 const { postGO, getDay } = require('../controllers/ground_operation.js');
 const { noMethod } = require('../controllers/errorHandler');
-const { authJWTMWAdmin } = require('../middleware/authJWT.js');
+const { authJWTMWAdmin, authJWTMW } = require('../middleware/authJWT.js');
 
-router.get('/', getDay)
+//Endpoints
+router.get('/', authJWTMW, getDay)
 router.get('/:day', getDay)
 router.post('/', authJWTMWAdmin, postGO);
 

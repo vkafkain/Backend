@@ -2,7 +2,6 @@ const GroundOperation = require("../models/GroundOperation");
 const { serverError } = require('./errorHandler');
 const Response = require('../models/Response');
 
-
 /**
  * // receives a string value and returns list of workers by job function
  * 

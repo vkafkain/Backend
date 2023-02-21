@@ -4,8 +4,8 @@ const { authJWTMW } = require('../middleware/authJWT');
 const { noMethod } = require('../controllers/errorHandler');
 const router = express.Router();
 
-router.get("/:hf",authJWTMW,  orderByWork);
-
+//Endpoints
+router.get("/:hf", authJWTMW,  orderByWork);
 router.use(noMethod);
 
 module.exports = router;
