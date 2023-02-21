@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
 //Controller
-//const { postLogin } = require('../controllers/login');
+const {login} = require('../controllers/login');
 const { noMethod } = require('../controllers/errorHandler');
 
-// router.post('/', postLogin)
+router.post('/login', login);
 
-router.use(noMethod)
+//router.use(noMethod);
 
 module.exports = router;

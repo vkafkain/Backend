@@ -1,5 +1,5 @@
 const User = require('../models/User.js');
-const { invalidInput } = require('../controllers/errorHandler')
+const { invalidInput, serverError } = require('../controllers/errorHandler')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -13,6 +13,8 @@ const login = async (req, res) => {
     if(!userName || !password) {
         return invalidInput(req, res);
     }
+
+    try{
    
     const userFound = await User.findOne({ userName });
 
@@ -28,23 +30,29 @@ const login = async (req, res) => {
     if(validPassword) {
             
         const payload = {
-            userId: userFound._id,
-            userName: userFound.userName
+            userName: userFound.name,
+            role: userFound.role
         }
         const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_KEY);
         
         return res.status(200).json({
             status: 'ok',
+            userName: userFound.name,
+            role: userFound.role,
             accessToken: accessToken
         });
     
     } else {
+
         return res.status(401).json({
             status: 'error',
             error: '401 - Unauthorized Access: Invalid username/password'
         })
     }
  
+} catch(err) {
+    return serverError(req, res);
+}
 }
 
-module.exports = login;
+module.exports = { login };
