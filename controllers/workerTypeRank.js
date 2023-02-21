@@ -2,7 +2,7 @@ const GroundOperation = require("../models/GroundOperation");
 const { serverError } = require('./errorHandler');
 const Response = require('../models/Response');
 
-
+// returns list of workers by job function
 const orderByWork = async (req, res) => {
 
     const handling_function = req.params.hf;
@@ -13,5 +13,7 @@ const orderByWork = async (req, res) => {
         return res.status(200).json(new Response(200, null, null, ordered))
     } catch (err) { return serverError(req, res, err); }
 }
+
+
 
 module.exports = { orderByWork }

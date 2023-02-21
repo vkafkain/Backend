@@ -22,7 +22,8 @@ const GroundOperation = sequelize.define("ground_operation", {
         }
     },
     handling_function: {
-        type: Sequelize.ENUM(['jardinera', 'equipaje', 'coordinacion']),
+        type: String,
+        //type: Sequelize.ENUM(['jardinera', 'equipaje', 'coordinacion']),
         allowNull: false
     },
     full_time: {
