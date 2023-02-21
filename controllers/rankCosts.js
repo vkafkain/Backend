@@ -1,16 +1,16 @@
-const User = require('../models/User');
+const GroundOperation = require('../models/GroundOperation');
 
 const orderDesc = async (req, res) => {
 
     try{
 
-        const user = await User.findAll({
+        const user = await GroundOperation.findAll({
             order: [
                 ['total_cost', 'DESC']
             ] 
         })
 
-        return res(200).json({
+        return res.status(200).json({
             status: 'ok',
             data: user
         });
@@ -30,13 +30,13 @@ const orderAsc = async (req, res) => {
 
     try{
 
-        const user = await User.findAll({
+        const user = await GroundOperation.findAll({
             order: [
                 ['total_cost', 'ASC']
             ] 
         })
 
-        return res(200).json({
+        return res.status(200).json({
             status: 'ok',
             data: user
         });

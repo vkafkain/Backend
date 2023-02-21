@@ -4,6 +4,6 @@ const { orderAsc, orderDesc } = require("../controllers/rankCosts");
 const { authJWTMW } = require('../middleware/authJWT');
 
 router.get('/asc', authJWTMW, orderAsc);
-router.get('/desc', orderDesc);
+router.get('/desc', authJWTMW, orderDesc);
 
 module.exports = router;
