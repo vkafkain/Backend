@@ -25,28 +25,33 @@ const GroundOperation = sequelize.define("ground_operation", {
         type: Sequelize.STRING,
         allowNull: false
     },
-    full_time: {
+    full_time_employees: {
         type: Sequelize.SMALLINT.UNSIGNED,
         allowNull: false,
         defaultValue: 0
     },
-    part_time: {
+    part_time_employees: {
         type: Sequelize.SMALLINT.UNSIGNED,
         allowNull: false,
         defaultValue: 0
     },
-    full_time_cost: {
-        type: Sequelize.MEDIUMINT.UNSIGNED,
+    total_employees: {
+        type: Sequelize.SMALLINT.UNSIGNED,
         allowNull: false,
         defaultValue: 0
     },
-    part_time_cost: {
-        type: Sequelize.MEDIUMINT.UNSIGNED,
+    full_time_employees_cost: {
+        type: Sequelize.FLOAT.UNSIGNED,
+        allowNull: false,
+        defaultValue: 0
+    },
+    part_time_employees_cost: {
+        type: Sequelize.FLOAT.UNSIGNED,
         allowNull: false,
         defaultValue: 0
     },
     total_cost: {
-        type: Sequelize.MEDIUMINT.UNSIGNED,
+        type: Sequelize.FLOAT.UNSIGNED,
         allowNull: false,
         defaultValue: 0
     }

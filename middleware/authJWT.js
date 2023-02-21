@@ -7,7 +7,7 @@ const authJWTMW = (req, res, next) => {
         if (!req.headers.authorization) { return res.status(401).json(new Response(401, { message: "You are not logged in" }, "There was an error", null)) }
         const token = req.headers.authorization.split(" ").pop()
         const dataToken = jwt.verify(token, process.env.ACCESS_TOKEN_KEY)
-        if (!dataToken.role || !dataToken.userName) {
+        if ((!dataToken.role && dataToken.role !== 0) || !dataToken.userName) {
             return res.status(401).json(new Response(401, { message: "Wrong credentials" }, "There was an error", null))
         }
         return next();
@@ -19,7 +19,7 @@ const authJWTMWAdmin = (req, res, next) => {
         if (!req.headers.authorization) { return res.status(401).json(new Response(401, { message: "You are not logged in" }, "There was an error", null)) }
         const token = req.headers.authorization.split(" ").pop()
         const dataToken = jwt.verify(token, process.env.ACCESS_TOKEN_KEY)
-        if (!dataToken.role || !dataToken.userName) {
+        if ((!dataToken.role && dataToken.role !== 0) || !dataToken.userName) {
             return res.status(401).json(new Response(401, { message: "Wrong credentials" }, "There was an error", null))
         }
         if (dataToken.role > 0) {

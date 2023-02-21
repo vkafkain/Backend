@@ -1,27 +1,15 @@
 const Response = require('../models/Response')
 const GroundOperation = require('../models/GroundOperation')
+const { serverError } = require('./errorHandler');
 
 const apiDataScience = `localhost:${process.env.DATASCIENCE_PORT}/put`
 
 const postGO = async (req, res) => {
-
     const data = req.body.data
     try {
-        data.forEach(operation => {
-            const day = operation.day
-            const hour = operation.hour
-            const handling_function = operation.handling_function
-            const full_time = operation.full_time
-            const part_time = operation.part_time
-            const full_time_cost = operation.full_time_cost
-            const part_time_cost = operation.part_time_cost
-            const total_cost = full_time_cost + part_time_cost
-            GroundOperation.create({ day, hour, handling_function, full_time, part_time, full_time_cost, part_time_cost, total_cost })
-        });
-        // O
-        // GroundOperation.bulkCreate(data)
+        GroundOperation.bulkCreate(data)
         return res.status(201).json(new Response(201, null, null, null))
-    } catch (error) { return res.status(500).json(new Response(500, { message: error.message }, "There was an error", null)) }
+    } catch (err) { return serverError(req, res, err); }
 }
 
 const putGOInput = async (req, res) => {
@@ -34,25 +22,33 @@ const putGOInput = async (req, res) => {
                 salary
             })
         })
-        res.status(200).json(new Response(200, null, "ok", null))
-    } catch (error) { return res.status(500).json(new Response(500, { message: error.message }, "There was an error", null)) }
+        return res.status(200).json(new Response(200, null, "ok", null))
+    } catch (err) { return serverError(req, res, err); }
 }
 
 const getDay = async (req, res) => {
-
     let myDay = req.params.day;
-
-    if(!myDay) {
-        myDay = new Date().toLocaleString('sv-SE', { timeZone: 'UTC'}).split(' ')[0];
-    } 
-
-    try {
-        console.log(myDay)
-
-    } catch(err){
-        console.log(err.message);
-
+    if (!myDay) {
+        myDay = new Date().toLocaleString('sv-SE', { timeZone: 'UTC' }).split(' ')[0];
     }
+
+    let whereCondition = {day: myDay};
+
+    let orderCost = null;
+    if(req.body.total_cost){
+        if(req.body.total_cost === 'ASC' || req.body.total_cost === 'DESC'){
+            orderCost = [['total_cost', req.body.total_cost]]
+        }
+    }
+    if(req.body.handling_function){
+        whereCondition.handling_function = req.body.handling_function
+    }
+    try {
+        const goDay = await GroundOperation.findAll({ where: whereCondition, attributes: { exclude: ['id', 'createdAt', 'updatedAt'] }, raw: true, order: orderCost })
+        let total = 0;
+        goDay.reduce((prev,acc) => {prev+acc}, 0)
+        return res.status(200).json(new Response(200, null, null, goDay))
+    } catch (err) { return serverError(req, res, err); }
 }
 
 
