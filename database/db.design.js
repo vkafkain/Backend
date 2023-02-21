@@ -4,8 +4,6 @@ const bcrypt = require('bcrypt');
 const { sequelize } = require('./db.connection')
 const config = require("./db.config");
 
-
-
 const designDB = async function () {
     const dbcnx = await mysql.createConnection({
         host: config.host,
@@ -18,10 +16,9 @@ const designDB = async function () {
 
     await sequelize.sync({ force: false })
     try {
-        const password = await bcrypt.hash(`${config.admin_password}`,2)
+        const password = await bcrypt.hash(`${config.admin_password}`, 2)
         await User.create({ name: "Admin", rol: 0, password, email: "admin@example.com" })
     } catch (error) { console.log("Usuari Admin ja hi és"); }
-
 }
 
 module.exports = { designDB }
