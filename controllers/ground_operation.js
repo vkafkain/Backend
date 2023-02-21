@@ -4,6 +4,7 @@ const GroundOperation = require('../models/GroundOperation')
 const apiDataScience = `localhost:${process.env.DATASCIENCE_PORT}/put`
 
 const postGO = async (req, res) => {
+
     const data = req.body.data
     try {
         data.forEach(operation => {
@@ -36,5 +37,8 @@ const putGOInput = async (req, res) => {
         res.status(200).json(new Response(200, null, "ok", null))
     } catch (error) { return res.status(500).json(new Response(500, { message: error.message }, "There was an error", null)) }
 }
+
+
+
 
 module.exports = { postGO, putGOInput }
