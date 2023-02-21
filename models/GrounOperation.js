@@ -44,6 +44,11 @@ const GroundOperation = sequelize.define("ground_operation", {
         type: Sequelize.MEDIUMINT.UNSIGNED,
         allowNull: false,
         defaultValue: 0
+    },
+    total_cost: {
+        type: Sequelize.MEDIUMINT.UNSIGNED,
+        allowNull: false,
+        defaultValue: 0
     }
 })
 
