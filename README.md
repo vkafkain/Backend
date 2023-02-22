@@ -67,6 +67,21 @@ Para el caso de uso de cambio de parametros desde la UI para re ejecutar el mode
 
 This is the datset you must check for the solution of the challenge: VUELING DATASET
 
+FRONT DEV
+
+HTTP Interceptors
+
+Error handling interceptor
+
+To control HTTP request errors we have implemented an HTTP interceptor that listens for all these requests and in case of an error triggers the Sweet Alert Modal  that displays an error message indicating the error code.
+
+Before triggering the snack bar the HTTP interceptor does a retry twice to make sure that the request does not give an answer. 
+
+Ngx-spinner interceptor
+
+To control the timeout during the loading of API requests a spinner has been implemented using the ngx-spinner Angular library, this spinner is imported into the module and here, in the interceptor, and also includes its own stylesheet in the angular.json file. To be able to use it in all requests, we intercept every Http request through the interceptor and start the spinner. When the request finishes, which we control by finalize, we stop the spinner.
+
+
 
 ## Requirements
 
@@ -115,3 +130,9 @@ _We have created the database in MySQL with the entity-relationship model, in la
 * [sequelize](https://www.npmjs.com/package/sequelize) - Sequelize is an easy-to-use and promise-based Node.js ORM tool for Postgres, MySQL, MariaDB, SQLite, DB2, Microsoft SQL Server, and Snowflake. It features solid transaction support, relations, eager and lazy loading, read replication and more.
 * [cors](https://www.npmjs.com/package/cors) - CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 * [JWT](https://www.npmjs.com/package/jsonwebtoken) - JSON Web Token (JWT) is a compact URL-safe means of representing claims to be transferred between two parties. 
+* [Angular](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Angular_getting_started) - Front end framework
+* [Bootstrap 5.2](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Angular_getting_started) - Front end css framework
+
+
+Codefactor : 
+[![CodeFactor](https://www.codefactor.io/repository/github/yasmingimenezm/vueling-hackaton-team5/badge)](https://www.codefactor.io/repository/github/yasmingimenezm/vueling-hackaton-team5)
