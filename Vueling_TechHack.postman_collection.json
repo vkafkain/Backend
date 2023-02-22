@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "6ceac7a3-7317-4d82-8409-ab07cf0e81c8",
+		"name": "Vueling_TechHack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23223327"
+	},
+	"item": [
+		{
+			"name": "orders total cost by asc order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFkbWluIiwicm9sZSI6MSwiaWF0IjoxNjc2OTk1MDA2fQ.vBo-hPP_YH4AJ6bGe_8YZZ-ZVXK_Q_Uv8AYLvv3zBd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/costs/asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"costs",
+						"asc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logs in user Admin and returns username, role, token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFkbWluIiwicm9sZSI6MSwiaWF0IjoxNjc2OTk1MDA2fQ.vBo-hPP_YH4AJ6bGe_8YZZ-ZVXK_Q_Uv8AYLvv3zBd8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\": \"Admin\",\n    \"password\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orders total cost by desc order. Return value is dependent upon token.",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFkbWluIiwicm9sZSI6MCwiaWF0IjoxNjc3MDU1NzAwfQ.5VD5_wRtTsN2j3oKVfGT2Hd2PELj2xcctI1mIijSnTQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/costs/desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"costs",
+						"desc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logs in user guest and returns username, role, and token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\": \"guest\",\n    \"password\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login attempt without valid token fails",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userName\": \"fake\",\n    \"password\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "groundoperation should  return spreadsheet data by given day",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFkbWluIiwicm9sZSI6MCwiaWF0IjoxNjc3MDU1NzAwfQ.5VD5_wRtTsN2j3oKVfGT2Hd2PELj2xcctI1mIijSnTQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/groundoperation/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"groundoperation",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "denies access to route to non-admin users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6Imd1ZXN0Iiwicm9sZSI6MSwiaWF0IjoxNjc3MDU3NjU5fQ.3AkGToP8ZTCpDfT-DU_z8KNb3QMNTSnueW0CbdfxKFk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/groundoperation/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"groundoperation",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "returns handling function jobs data by one of the three valid options (jardinera, equipaje, coordinacion)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IkFkbWluIiwicm9sZSI6MCwiaWF0IjoxNjc3MDU3NTUwfQ.sObexmfWULLJsAvv7Agnh2MRtlwis2aXLJKuFGicGkg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/workers/jardinera",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"workers",
+						"jardinera"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

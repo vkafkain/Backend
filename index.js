@@ -10,10 +10,22 @@ const PORT = process.env.SERVER_PORT || 3000;
 // Initialize db
 designDB()
 
+
 // Global middlewares
+app.use(cors({
+    'origin': 'localhost:5211',
+    'Access-Control-Allow-Origin': '*',
+}));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
-app.use(cors());
+
+
+
+
+
+
+
+
 
 app.use('/', require("./routes"));
 
